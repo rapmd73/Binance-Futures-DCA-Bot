@@ -142,7 +142,6 @@ while True:
         if shortPosition and float(position_info["entryPrice"][len(position_info.index) - 1]) - (float(position_info["entryPrice"][len(position_info.index) - 1])/100) * takeProfit >= currentPrice and (positionSide == 2 or positionSide == 3):
             print("TAKE PROFIT")
             shortExit()
-            win = win + 1
             first = True
             tradeCount = 0
             
