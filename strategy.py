@@ -17,6 +17,7 @@ priceDeviation = float(input("Price Deviation %: "))
 safetyOrderStepScale = float(input("Safety Order Step Scale: "))
 safetyOrderVolumeScale = float(input("Safety Order Volume Scale: "))
 takeProfit = float(input("Take Profit %: "))
+stopLoss = float(input("Stop Loss %: "))
 positionSide = float(input("Position Side = Only Long(1) - Only Short(2) - Long and Short(3): "))
 
 #ATTRIBUTES
@@ -146,14 +147,14 @@ while True:
             tradeCount = 0
             
         # LONG STOP LOSS
-        if longPosition and (float(free_balance["USDT"]) <= baseOrderSize or maxSafetyTradesCount<=tradeCount) and firstPrice - (firstPrice/100) * priceDeviation >= currentPrice and (positionSide == 1 or positionSide == 3):
+        if longPosition and (float(free_balance["USDT"]) <= baseOrderSize or maxSafetyTradesCount<=tradeCount) and firstPrice - (firstPrice/100) * stopLoss >= currentPrice and (positionSide == 1 or positionSide == 3):
             print("STOP LOSS")
             longExit()
             first = True
             tradeCount = 0
         
         # SHORT STOP LOSS
-        if shortPosition and (float(free_balance["USDT"]) <= baseOrderSize or maxSafetyTradesCount<=tradeCount) and ((firstPrice / 100) * priceDeviation) + firstPrice <= currentPrice and (positionSide == 2 or positionSide == 3):
+        if shortPosition and (float(free_balance["USDT"]) <= baseOrderSize or maxSafetyTradesCount<=tradeCount) and ((firstPrice / 100) * stopLoss) + firstPrice <= currentPrice and (positionSide == 2 or positionSide == 3):
             print("STOP LOSS")
             shortExit()
             first = True
