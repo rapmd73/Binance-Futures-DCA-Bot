@@ -167,7 +167,6 @@ while True:
             print("Trade Count: ", tradeCount, " Avarege Price: ", float(position_info["entryPrice"][len(position_info.index) - 1]), " Free Usdt: ", round(float(free_balance["USDT"]),2), " Total Money: ", round(float(balance['total']["USDT"]),2))
         if inPosition == False: 
             print("Starting Price: ", firstPrice, " Current Price: ", currentPrice, " Total Money: ", round(float(balance['total']["USDT"]),2))
-        print("price deviation: ", priceDeviation)
         print("=======================================================================================================================================")
 
     except ccxt.BaseError as Error:
